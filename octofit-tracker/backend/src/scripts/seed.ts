@@ -1,9 +1,9 @@
-import { connectDatabase, disconnectDatabase } from '../database.js'
-import User from '../models/user.js'
-import Team from '../models/team.js'
-import Activity from '../models/activity.js'
-import Leaderboard from '../models/leaderboard.js'
-import Workout from '../models/workout.js'
+import { connectDatabase, disconnectDatabase } from '../database'
+import User from '../models/user'
+import Team from '../models/team'
+import Activity from '../models/activity'
+import Leaderboard from '../models/leaderboard'
+import Workout from '../models/workout'
 
 async function seed() {
   console.log('Seed the octofit_db database with test data')
