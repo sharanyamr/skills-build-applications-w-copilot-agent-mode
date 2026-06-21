@@ -14,6 +14,12 @@ const apiHost = process.env.CODESPACE_NAME
 
 app.use(express.json())
 
+app.get('/', (_req, res) => {
+  res.send(
+    `<!DOCTYPE html><html><head><title>OctoFit Tracker</title></head><body><h1>OctoFit Tracker Backend</h1><p>The backend is running. Use <a href="/api/health">/api/health</a> or start the frontend on port 5173.</p></body></html>`
+  )
+})
+
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString(), apiHost })
 })
