@@ -1,17 +1,15 @@
-import mongoose from 'mongoose'
+import { connectDatabase, disconnectDatabase } from '../database.js'
 import User from '../models/user.js'
 import Team from '../models/team.js'
 import Activity from '../models/activity.js'
 import Leaderboard from '../models/leaderboard.js'
 import Workout from '../models/workout.js'
 
-const uri = process.env.MONGODB_URI ?? 'mongodb://127.0.0.1:27017/octofit_db'
-
 async function seed() {
   console.log('Seed the octofit_db database with test data')
 
-  await mongoose.connect(uri)
-  console.log('Connected to MongoDB at', uri)
+  await connectDatabase()
+  console.log('Connected to MongoDB at octofit_db')
 
   await Promise.all([
     User.deleteMany({}),
@@ -54,7 +52,7 @@ async function seed() {
 
   console.log(`Seeded ${users.length} users, ${teams.length} teams, ${activities.length} activities, ${leaderboardEntries.length} leaderboard entries, ${workouts.length} workouts`)
 
-  await mongoose.disconnect()
+  await disconnectDatabase()
   console.log('Disconnected from MongoDB')
 }
 
